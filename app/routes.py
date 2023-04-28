@@ -1,19 +1,20 @@
 from flask import Blueprint, jsonify, abort, make_response
-
+from app.models.planet import Planet
+from app import db
 
 class Planet:
-    def __init__(self, id, name, description, distance_from_earth):
+    def __init__(self, id, name, description, distance_from_sun):
         self.id = id
         self.name = name
         self.description = description
-        self.distance_from_earth = distance_from_earth
+        self.distance_from_sun = distance_from_sun
 
     def to_dict(self):
         return dict(
             id=self.id,
             name=self.name,
             description=self.description,
-            distance_from_earth=self.distance_from_earth
+            distance_from_sun=self.distance_from_sun
         )
 
 

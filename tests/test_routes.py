@@ -42,7 +42,7 @@ def test_get_one_planets_returns_no_data(client):
     response_body = response.get_json()
     
     assert response.status_code == 404
-    assert response_body == "planet 1 not found"
+    assert response_body == "Planet 1 not found"
     
 def test_create_planet_happy_path(client):
     EXPECTED_PLANET = {

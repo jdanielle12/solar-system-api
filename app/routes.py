@@ -4,7 +4,6 @@ from app import db
 
 planet_bp = Blueprint("planets", __name__, url_prefix="/planets")
 
-# POST /planets
 @planet_bp.route("", methods=["POST"])
 def create_planet():
     request_body = request.get_json()

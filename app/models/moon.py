@@ -1,28 +1,30 @@
 from app import db
 
-class Planet(db.Model):
+class Moon(db.Model):
     id = db.Column(
             db.Integer,
             primary_key=True,
             autoincrement=True)
-    name = db.Column(db.String, nullable=False)
+    size = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
-    distance_from_sun = db.Column(db.String, nullable=False)
-    moons = db.relationship("Moon", back_populates="planet")
+    fun_fact = db.Column(db.String, nullable=False)
+    planet_id = db.Column(db.Integer, db.ForeignKey("planet.id"))
+    planet = db.relationship("Planet", back_populates="moons")
+   
     
     def to_dict(self):
         return {
                 "id": self.id,
-                "name": self.name,
+                "size": self.size,
                 "description": self.description,
-                "distance_from_sun": self.distance_from_sun
+                "fun_fact": self.fun_fact
         }
         
     @classmethod
     def from_dict(cls, data_dict):
         return cls(
-                name = data_dict["name"],
+                size = data_dict["size"],
                 description = data_dict["description"],
-                distance_from_sun = data_dict["distance_from_sun"]
+                fun_fact = data_dict["fun_fact"]
         )
         

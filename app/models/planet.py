@@ -1,4 +1,5 @@
 from app import db
+from helper import validate_model
 
 class Planet(db.Model):
     id = db.Column(
